@@ -15,7 +15,7 @@ st.markdown("Upload your resume and get AI-powered feedback tailored to your nee
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 uploaded_file = st.file_uploader("Upload your resume (PDF of TXT)", type=["pdf", "txt"])
-job_role = st.text_input("Enter the job role you're taregtting (optional)")
+job_role = st.text_input("Enter the job role you're targeting (optional)")
 
 analyze = st.button("Analyze Resume")
 
@@ -36,7 +36,7 @@ if analyze and uploaded_file:
         file_content = extract_text_from_file(uploaded_file)
         
         if not file_content.strip():
-            st.error("File does not have any contnet...")
+            st.error("File does not have any content...")
             st.stop()
         
         prompt = f"""Please analyze this resume and provide constructive feedback. 
@@ -65,4 +65,4 @@ if analyze and uploaded_file:
         st.markdown(response.choices[0].message.content)
     
     except Exception as e:
-        st.error(f"An error occured: {str(e)}")
+        st.error(f"An error occurred: {str(e)}")
